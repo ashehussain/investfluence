@@ -12,7 +12,7 @@ html, body {
 }
 
 .jumbotron{
-  background: url("images/msf_front_page.jpg") no-repeat center center;
+  background: url("/public/images/msf_front_page.jpg") no-repeat center center;
   background-size:cover;
   height:350px;
   padding:48px 30px;
@@ -75,7 +75,7 @@ ul{
 
 .supporting2{
   padding:70px 30px;
-  background: url("images/msf_frontpage3.jpeg") no-repeat center center;
+  background: url("/public/images/msf_frontpage3.jpeg") no-repeat center center;
   vertical-align:center;
   background-size:cover;
 }
