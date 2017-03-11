@@ -1,8 +1,13 @@
 'use strict';
 
+if(!parseInt(process.env.PROD)) require("dotenv").load();
+
 const   express = require("express"),
         app = express(),
+        mongoose = require("mongoose"),
         PORT = process.env.PORT || 8080;
+
+mongoose.connect(process.env.MONGO);
 
 //Serve static files from public folder.
 app.use('/public', express.static(process.cwd() + '/app/public'));
