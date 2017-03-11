@@ -1,0 +1,86 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  color:white;
+  background-color: #161718;
+}
+
+.navbar{
+  height:auto;
+  background-color:white;
+  margin-bottom:0px;
+}
+
+.jumbotron{
+  background: url("images/msf_front_page.jpg") no-repeat center center;
+  background-size:cover;
+  height:350px;
+  padding:48px 30px;
+  margin-bottom:0px;
+}
+
+.container{
+  margin:0px 85px;
+}
+
+ul{
+  list-style:none;
+  padding-left:0px;
+}
+
+.header ul{
+  float:right;
+}
+
+.logo{
+  height:95px;
+  width:125px;
+  display:inline-block;
+}
+
+.header li{
+  display:inline-block;
+  margin-top:40px;
+}
+
+.btn:hover{
+  color: #2a6496;
+}
+
+.btn{
+  border-radius:0px;
+  background-color:#72a904;
+  color:white;
+  font-weight:bold;
+  padding:8px 30px;
+  margin-top:15px;
+}
+
+.main{
+  text-align:center;
+}
+
+.main h1{
+  padding-top:60px;
+  margin-top:20px;
+  margin-bottom:10px;
+}
+
+.supporting1{
+  background-color: #269292;
+  background-size:cover;
+  padding:70px 30px;
+  vertical-align:center;
+}
+
+.supporting2{
+  padding:70px 30px;
+  background: url("images/msf_frontpage3.jpeg") no-repeat center center;
+  vertical-align:center;
+  background-size:cover;
+}
+
+.supporting3{
+  padding:70px 30px;
+  vertical-align:center;
+}
