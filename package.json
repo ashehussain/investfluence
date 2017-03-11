@@ -4,10 +4,8 @@
   "description": "An MSF project",
   "main": "server.js",
   "scripts": {
-    "install": "mkdir data\\db",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "dev": "concurrently \"mongod --smallfiles --dbpath ./data/db \" \"nodemon server.js\""
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -24,7 +22,7 @@
     "mongoose": "^4.8.6"
   },
   "devDependencies": {
-    "concurrently": "^3.4.0",
+    "dotenv": "^4.0.0",
     "nodemon": "^1.11.0"
   }
 }
