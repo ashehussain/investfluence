@@ -3,12 +3,13 @@
 const mongoose = require("mongodb");
 
 module.exports = (req, res)=>{
+	console.log("Hello detailed");
 	mongoose.MongoClient.connect(process.env.MONGO, (err, db)=>{
 		let funds = req.query.funds.toUpperCase().split(",");
 		db.collection("Campaigns").findOne({_id: mongoose.ObjectID(req.query.id)}, (err2, camp)=>{
 			if(err2) console.log(err2);
 			console.log(camp);
-			db.collection("Funds").aggregate( [ { $unwind: "$assets.assetAllocation" }, { $match: { $and: [{ "assets.assetAllocation.ticker": { $in: ["GSK"] }}, { "ticker": { $in: ["BUFBX"] } } ] } }, {$group: {"_id": "$ticker", "assets": {$addToSet: "$assets.assetAllocation"}}} ], (err4, results)=>{
+			db.collection("Funds").aggregate( [ { $unwind: "$assets.assetAllocation" }, { $match: { $and: [{ "assets.assetAllocation.ticker": { $in: camp.targetedStocks }}, { "ticker": { $in: funds } } ] } }, {$group: {"_id": "$ticker", "assets": {$addToSet: "$assets.assetAllocation"}}} ], (err4, results)=>{
 				if(err4) console.log(err4);
 				//console.log(camp);
 				camp.funds = results;

@@ -13,5 +13,5 @@ module.exports = (app)=>{
   app.get('/campaigndetails', (req, res)=>res.sendFile(p + "/campaigndetails/index.html"));
   app.get('/contact/:ticker', getContact);
   app.get('/campaigns', getCampaigns);
-  // app.get('/campaigns-details', getCampaignDetails);
+  app.get('/campaigns-details', getCampaignDetails);
 }
