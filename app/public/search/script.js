@@ -10,7 +10,6 @@ $(document).ready(function(){
       }
     })
   }
-  //search function to find character info;
   var addAJAXFunction = function(data){
     $('input').bind("enterKey",function(e){
     // alert("Enter");
@@ -21,25 +20,18 @@ $(document).ready(function(){
         if(e.keyCode == 13){
           e.preventDefault()
           $(this).trigger("enterKey");
+          //clear information on load
+          e.currentTarget.value = "";
           getData()
       }
 
     });
-
-    // $('#submitButton').click(function(event){
-    //   event.preventDefault();
-    //   var $name = $('input').val();
-    //   getData($name);
-    //   console.log($name);
-    //   $('.inputBox').addClass('hide');
-    // })
   }
-  //changes text to display character data and picture
+  // manipulate data to display info
   var handleResponse = function(data){
     console.log(data[0])
-    //clear information on load
-    $('#information').html(" ")
-    $('#des').html(" ")
+
+    // $('#des').html(" ")
     //on enter display information
     var placeDes = "Pneumonia is one of te leading cases of death among children around the world. You can help make the cost of the vaccine affordable."
     var $vals = $("<h4>Associated Campaigns</h4>"+
