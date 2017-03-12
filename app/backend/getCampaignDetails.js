@@ -1,17 +1,41 @@
 'use strict';
 
-const mongoose = require("mongoose");
+const mongoose = require("mongodb");
 
 module.exports = (req, res)=>{
+	mongoose.MongoClient.connect(process.env.MONGO, (err, db)=>{
+		let funds = req.query.funds.toUpperCase().split(",");
+		db.collection("Campaigns").findOne({_id: mongoose.ObjectID(req.query.id)}, (err2, camp)=>{
+			if(err2) console.log(err2);
+			console.log(camp);
+			db.collection("Funds").aggregate( [ { $unwind: "$assets.assetAllocation" }, { $match: { $and: [{ "assets.assetAllocation.ticker": { $in: ["GSK"] }}, { "ticker": { $in: ["BUFBX"] } } ] } }, {$group: {"_id": "$ticker", "assets": {$addToSet: "$assets.assetAllocation"}}} ], (err4, results)=>{
+				if(err4) console.log(err4);
+				//console.log(camp);
+				camp.funds = results;
+				//console.log(camp);
+				res.json(camp);
+			});
+		});
+	});
+/*
+	console.log(mongoose.connections);
+	console.log("getting camp details.");
 	let campaignId = req.query.id;
 	let funds = req.query.funds.toUpperCase().split(",");
-	mongoose.connection.db.collections("Campaigns", (err, collCampaign)=>{
-		collCampaign.find({"_id": campaignId}).toArray((err2, camp)=>{
-			mongoose.connection.db.collections("Funds", (err3, collFunds)=>{
-				collFunds.aggregate( [ { $unwind: "$assets.assetAllocation" }, { $match: { $and: [{ "assets.assetAllocation.ticker": { $in: ["GSK"] }}, { "ticker": { $in: ["BUFBX"] } } ] } }, {$group: {"_id": "$ticker", "assets": {$addToSet: "$assets.assetAllocation"}}} ]).exec((err4, results)=>{
+	console.log(`${campaignId} + ${funds}\n`);
+	mongoose.db.collection("Campaigns").find({"_id": campaignId}).toArray((err2, camp)=>{
+			console.log(camp);
+			console.log("camp\n");
+			if(err2) console.log(err2);
+				mongoose.d
+b.collection("Funds").aggregate( [ { $unwind: "$assets.assetAllocation" }]).exec((err4, results)=>{
+					console.log("aggregate");
+					if(err4) console.log(err4);
 					res.json(results);
 				})
+			
 			});
 		})
 	});
+*/
 }

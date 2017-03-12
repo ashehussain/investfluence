@@ -11,7 +11,7 @@ const
         mongoose = require("mongoose"),
         PORT = process.env.PORT || 8080;
 
-mongoose.connect(process.env.MONGO);
+mongoose.connect(process.env.MONGO, ()=>console.log("Mongoose connected."));
 
 //Serve static files from public folder.
 app.use('/public', express.static(process.cwd() + '/app/public'));
