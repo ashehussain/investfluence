@@ -12,15 +12,33 @@ html, body {
 }
 
 .jumbotron{
-  background: url("images/msf_front_page.jpg") no-repeat center center;
+  background: url("/public/images/msf_a_fair_shot_campaign_bg.jpg") no-repeat center center;
   background-size:cover;
   height:350px;
-  padding:48px 30px;
+  padding:30px;
   margin-bottom:0px;
+}
+
+.descript h2{
+  text-align: center;
+  margin:20px;
+}
+
+.center{
+  text-align:center;
+}
+
+p{
+  font-size: 15px;
+  line-height: 25px;
 }
 
 .container{
   margin:0px 85px;
+}
+
+#campaign-name{
+  margin-bottom:40px;
 }
 
 ul{
@@ -49,15 +67,67 @@ ul{
 
 .btn{
   border-radius:0px;
-  background-color:#72a904;
   color:white;
   font-weight:bold;
   padding:8px 30px;
   margin-top:15px;
 }
 
+.btn-yellow{
+  background-color:#f99614;
+}
+
+.btn-orange{
+  background-color:#fa6400;
+}
+
+.btn-teal{
+  background-color:#038f90;
+}
+
+.btn-green{
+  background-color:#4f8f03;
+}
+
+.index-count{
+  display: inline-block;
+}
+
 .main{
   text-align:center;
+}
+
+.fullinfocard{
+  display: inline-block;
+  color:black;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom:30px;
+  padding:30px;
+}
+
+.infocard {
+  color:black;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 0px;
+}
+
+li{
+  font-size: 15px;
+  line-height: 25px;
+}
+
+.action-buttons{
+  text-align: center;
+  width:200px;
+  height:60px;
+  white-space: pre-wrap;
+  overflow: hidden;
+  border:15px;
+  margin-left:20px;
+}
+
+#expire{
+  color:red;
 }
 
 .main h1{
@@ -67,20 +137,7 @@ ul{
 }
 
 .supporting1{
-  background-color: #269292;
-  background-size:cover;
-  padding:70px 30px;
-  vertical-align:center;
-}
-
-.supporting2{
-  padding:70px 30px;
-  background: url("images/msf_frontpage3.jpeg") no-repeat center center;
-  vertical-align:center;
-  background-size:cover;
-}
-
-.supporting3{
+  background-color: white;
   padding:70px 30px;
   vertical-align:center;
 }
