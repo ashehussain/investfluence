@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 
 module.exports = (req, res)=>{
     let obj = {};
-    let arr = req.query.ticker.toUpperCase().split(",");
+    let arr = req.query.ticker.toLowerCase().split(",");
     let gotFundsObj = new Promise((resolve, reject)=>{
         mongoose.connection.db.collection("Funds", (err, coll)=>{
             if(err) reject(err);
@@ -54,7 +54,7 @@ module.exports = (req, res)=>{
         for(let i in obj){
             arr3.push(obj[i]);
         }
-        res.send(JSON.stringify(arr3));
+        res.send(arr3);
     }, (err)=>console.log(err));
     });
 
