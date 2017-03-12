@@ -1,8 +1,11 @@
 $(document).ready(function() {
-  var getData = function(idName, tickerName) {
+  var idName ='58c4bb4170900285867fcdd3'
+  var tickerName='PPH'
+
+  var getData = function(id, tick) {
     return $.ajax({
       crossDomain: true,
-      url: 'http://52.39.21.43:8080/campaigns-details?id=' + idName +"&funds=" +tickerName,
+      url: 'http://52.39.21.43:8080/campaigns-details?id=' + idName + '&funds=' +tickerName,
       method: 'GET',
       dataType: 'json',
       success: function(data) {
@@ -16,27 +19,7 @@ $(document).ready(function() {
       }
     })
   }
-  var addAJAXFunction = function(data) {
-   $('input').bind("enterKey", function(e) {
-    // alert("Enter");
-      $('#campaignDisplay').show();
-      // e.preventDefault()
-      });
-      $('input').keydown(function(e) {
-        if (e.keyCode == 13) {
-          e.preventDefault()
-          $(this).trigger("enterKey");
-          //clear information on load
 
-          var $ticker = $('#tags').val();
-          console.log($ticker)
-          getData($ticker);
-          e.currentTarget.value = $ticker;
-        }
-      });
-
-
-    }
     // manipulate data to display info
   var handleResponse = function(data) {
     console.log("datacheck")
@@ -50,7 +33,7 @@ $(document).ready(function() {
     //on enter display information
   };
   //call search here
-  addAJAXFunction()
+  getData()
 
   $(function () {
       $('#emailbutton').click(function (event) {
