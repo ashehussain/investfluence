@@ -10,13 +10,19 @@ $(document).ready(function() {
         console.log("wtf is this shit")
         handleResponse(data);
       },
-      error: function(er, textStatus, error) {
-        console.log("is there an error here?")
-        console.log(er)
-        console.log(error)
-      }
-    })
-  }
+      error: function(err) {
+        return $.ajax({
+        crossDomain: true,
+        url: 'http://52.39.21.43:8080/campaigns?ticker=' + tickerName,
+        method: 'GET',
+        dataType: 'json',
+        success: function(data) {
+          console.log("wtf is this shit")
+          handleResponse(data);
+        }
+      })
+    }
+  })}
   var addAJAXFunction = function(data) {
    $('input').bind("enterKey", function(e) {
     // alert("Enter");
