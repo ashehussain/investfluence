@@ -4,11 +4,13 @@ const mongoose = require("mongoose");
 
 module.exports = (req, res)=>{
     let obj = {};
-    let arr = req.query.ticker.toUpperCase().split(",");
+    let arr = req.query.ticker.split(","),
+	arr2MikeSucks = req.query.ticker.toUpperCase().split(",");
+	console.log(arr);
     let gotFundsObj = new Promise((resolve, reject)=>{
         mongoose.connection.db.collection("Funds", (err, coll)=>{
             if(err) reject(err);
-            coll.find({"ticker": {$in: arr}}).toArray((err2, doc)=>{
+            coll.find({$or: [{"ticker": {$in: arr2MikeSucks}}, {"name": {$in: arr}}]}).toArray((err2, doc)=>{
                 if(err2) reject(err2);
                 resolve(doc);
             });
