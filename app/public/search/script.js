@@ -103,9 +103,11 @@ $(document).ready(function() {
     // manipulate data to display info
   var handleResponse = function(data) {
     console.log("datacheck")
-    console.log(data)
+
     data.forEach(function(object) {
       var placeDes = "Pneumonia is one of te leading cases of death among children around the world. You can help make the cost of the vaccine affordable."
+      var dataId= object._id
+      console.log(dataId)
       var $vals = $("<h4>Associated Campaigns</h4>" + "<p>" + object.name +
         "<button id='goToCampaign'> Campaigns</button>"+
         "</p>" + "<img src=''>" + "<p>Description: " + object.description + "</p>" + "<p># of Participants: " + object.totalBackers + "</p>" + "<div class='progress'><div class='progress-bar progress-bar-success progress-bar-striped active' role='progressbar' aria-valuenow='40' aria-valuemin='0' aria-valuemax='90' style='width:40%'>40%</div></div>" + "<p class='expire'>Expires:" + data.deadline + " </p>")
