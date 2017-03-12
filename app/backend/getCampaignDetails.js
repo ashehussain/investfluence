@@ -54,7 +54,7 @@ module.exports = (req, res)=>{
         for(let i in obj){
             arr3.push(obj[i]);
         }
-        res.send(arr3);
+        res.json(arr3);
     }, (err)=>console.log(err));
     });
 
