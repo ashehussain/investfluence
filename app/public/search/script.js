@@ -17,7 +17,7 @@ $(document).ready(function() {
         method: 'GET',
         dataType: 'json',
         success: function(data) {
-          console.log("wtf is this shit")
+          console.log("wtf is this shit is it an error?")
           handleResponse(data);
         }
       })
@@ -116,7 +116,7 @@ $(document).ready(function() {
       console.log(dataId)
       var $vals = $("<h4>Associated Campaigns</h4>" + "<p>" + object.name +
         "<button id='goToCampaign'> Campaigns</button>"+
-        "</p>" + "<img src=''>" + "<p>Description: " + object.description + "</p>" + "<p># of Participants: " + object.totalBackers + "</p>" + "<div class='progress'><div class='progress-bar progress-bar-success progress-bar-striped active' role='progressbar' aria-valuenow='40' aria-valuemin='0' aria-valuemax='90' style='width:40%'>40%</div></div>" + "<p class='expire'>Expires:" + data.deadline + " </p>")
+        "</p>" + "<img src=''>" + "<p>Description: " + object.description + "</p>" + "<p># of Participants: " + object.totalBackers + "</p>" + "<div class='progress'><div class='progress-bar progress-bar-success progress-bar-striped active' role='progressbar' aria-valuenow='40' aria-valuemin='0' aria-valuemax='90' style='width:40%'>40%</div></div>" + "<p class='expire'>Expires:" + object.deadline + " </p>")
       $('#campaignDisplay').append($vals)
     });
     // $('#des').html(" ")
