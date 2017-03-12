@@ -52,5 +52,14 @@ $(document).ready(function() {
   //call search here
   addAJAXFunction()
 
-
+  $(function () {
+      $('#emailbutton').click(function (event) {
+        var email = 'YourMututalFund@invest.com';
+        var subject = $('campaign-name').text();
+        var emailBody = $('campaign-description').text();
+        var attach = 'path';
+        document.location = "mailto:"+email+"?subject="+subject+"&body="+emailBody+
+            "?attach="+attach;
+      });
+    });
 })
