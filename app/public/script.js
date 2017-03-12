@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  $('#goToSearch').click(function(event) {
-    $(location).attr('href', '/public/search/index.html')
+    $('#goToSearch').click(function(event) {
+    window.location.replace("/search");
   });
 })
