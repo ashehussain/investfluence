@@ -2,8 +2,12 @@
 
 if(!parseInt(process.env.PROD)) require("dotenv").load();
 
-const   express = require("express"),
+const   
+		//express framework
+		express = require("express"),
+		//http server
         app = express(),
+        //driver, connects to DB
         mongoose = require("mongoose"),
         PORT = process.env.PORT || 8080;
 
