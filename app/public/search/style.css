@@ -11,13 +11,6 @@ html, body {
   margin-bottom:0px;
 }
 
-.jumbotron{
-  background: url("images/msf_front_page.jpg") no-repeat center center;
-  background-size:cover;
-  height:350px;
-  padding:48px 30px;
-  margin-bottom:0px;
-}
 
 .container{
   margin:0px 85px;
@@ -107,7 +100,10 @@ table {
 }
 
 #campaignDisplay{
+  padding-right: 10px;
   display: none;
 }
-
+.expire{
+  color: red;
+}
 
