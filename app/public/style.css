@@ -38,6 +38,13 @@ ul{
   display:inline-block;
 }
 
+.logo2{
+  height:95px;
+  width:125px;
+  display:inline-block;
+  float:right;
+}
+
 .header li{
   display:inline-block;
   margin-top:40px;
