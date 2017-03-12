@@ -3,59 +3,15 @@
 const mongoose = require("mongoose");
 
 module.exports = (req, res)=>{
-    let obj = {};
-    let arr = req.query.ticker.toLowerCase().split(",");
-    let gotFundsObj = new Promise((resolve, reject)=>{
-        mongoose.connection.db.collection("Funds", (err, coll)=>{
-            if(err) reject(err);
-            coll.find({"ticker": {$in: arr}}).toArray((err2, doc)=>{
-                if(err2) reject(err2);
-                resolve(doc);
-            });
-        });
-    });
-
-    let promArr = [];
-
-    gotFundsObj.then((fundsObj)=>{
-        console.log("getfundsthen");
-        let assetAllocationsArr = fundsObj.forEach((fund)=>{
-            fund.assets.assetAllocation.forEach((stock)=>{
-                promArr.push(new Promise((resolve, reject)=>{
-                        mongoose.connection.db.collection("Campaigns", (err, coll)=>{
-                            if(err) throw err;
-                            console.log(stock.ticker);
-                            coll.find({"targetedStocks": {$elemMatch: {$eq: stock.ticker}}}).toArray((err2, doc)=>{
-                                if(err2) reject(err2);
-                                console.log(`Pushing obj: ${JSON.stringify(doc)}`);
-                                doc.forEach((camp)=>{
-                                    if(obj.hasOwnProperty(camp._id)){
-                                        obj[camp._id].fundsAssociatedWith.push(fund.ticker);
-                                    } else {
-                                        camp.fundsAssociatedWith = [fund.ticker];
-                                        obj[camp._id] = camp;
-                                    }
-                                })
-                                console.log(`obj: ${JSON.stringify(obj)}`)
-                                resolve();
-                            });
-                        });
-                    })
-                )
-            });
-        })
-
-    console.log(promArr);
-
-    Promise.all(promArr).then((results)=>{
-        console.log("All promises done");
-        console.log(obj);
-        let arr3 = [];
-        for(let i in obj){
-            arr3.push(obj[i]);
-        }
-        res.json(arr3);
-    }, (err)=>console.log(err));
-    });
-
+	let campaignId = req.query.id;
+	let funds = req.query.funds.toUpperCase().split(",");
+	mongoose.connection.db.collections("Campaigns", (err, collCampaign)=>{
+		collCampaign.find({"_id": campaignId}).toArray((err2, camp)=>{
+			mongoose.connection.db.collections("Funds", (err3, collFunds)=>{
+				collFunds.aggregate( [ { $unwind: "$assets.assetAllocation" }, { $match: { $and: [{ "assets.assetAllocation.ticker": { $in: ["GSK"] }}, { "ticker": { $in: ["BUFBX"] } } ] } }, {$group: {"_id": "$ticker", "assets": {$addToSet: "$assets.assetAllocation"}}} ]).exec((err4, results)=>{
+					res.json(results);
+				})
+			});
+		})
+	});
 }
