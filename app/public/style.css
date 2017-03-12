@@ -36,6 +36,7 @@ ul{
   height:95px;
   width:125px;
   display:inline-block;
+  float:left;
 }
 
 .logo2{
